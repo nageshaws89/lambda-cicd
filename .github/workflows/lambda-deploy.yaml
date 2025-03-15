@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'lambda/'
+      - 'lambda/**'
 
 jobs: 
   deploy-lambda: # Job name
@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2 # Checks out repo code
 
       - name: Set Up Python # Setup python environment
-      - uses: actions/setup-python@v2
+        uses: actions/setup-python@v2
         with:
           python-version: '3.12'
 
@@ -25,10 +25,10 @@ jobs:
           pip install -r lambda/requirements.txt -t lambda/  
 
       - name: Configure AWS Creds # Sets up AWS Credentials
-      - uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-          aws-access-secret-key: ${{secrets.AWS_ACCESS_SECRET_KEY}}
+          aws-secret-access-key: ${{secrets.AWS_ACCESS_SECRET_KEY}}
           aws-region: eu-east-1
 
       - name: Deploy Lambda Function #Zips lambda directory and updates lambda function
