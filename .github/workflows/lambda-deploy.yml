@@ -21,7 +21,7 @@ jobs:
 
       - name: Install Dependencies # Install any packages
         run:
-          python3.12 -m pip install pip install -r lambda/requirements.txt -t lambda/  
+          python3.7 -m pip install -r lambda/requirements.txt -t lambda/  
 
       - name: Configure AWS Creds # Sets up AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
