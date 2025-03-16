@@ -1,11 +1,9 @@
 name: Validate CloudFormation on PR
 
 on:
-  push:
-    branches:
-      - main
-      paths:
-        - 'cloudformation/**'
+  pull_requests:
+    paths:
+      - 'cloudformation/**'
 
 # Sets the permission to Github token
 permissions:
