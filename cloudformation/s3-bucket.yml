@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: 'S3 bucket for CICD PR'
 
 Parameters:
-  Env:
+  Environment:
     Type: String
     Default: test
     AllowedValues:
@@ -14,10 +14,10 @@ Resources:
   MyS3Bucket:
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: !Sub '${AWS::StackName}-${Env}-bucket'
+      BucketName: !Sub '${AWS::StackName}-${Environment}-bucket'
       Tags:
-        - Key: Env
-          Value: !Ref Env
+        - Key: Environment
+          Value: !Ref Environment
         - Key: Project
           Value: GithubActionsTeating
 
